@@ -30,8 +30,8 @@
 
 #### Please list the names of the projects you worked on today:
 
-*
+* To-Do List
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/to-do-list
