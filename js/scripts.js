@@ -11,4 +11,13 @@ $(document).ready(function() {
     $("#user").append(user);
   }
 
+  $("form#list").submit(function(e) {
+    e.preventDefualt();
+    var newTask = $("input#work").val();
+
+    var newListItem = new Tasks(newTask);
+
+    $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
+    // Doesn't add new list item. just resets page.
+  })
 })
