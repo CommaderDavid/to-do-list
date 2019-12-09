@@ -14,8 +14,8 @@ toDoList.prototype.assignId = function() {
   return this.currentId;
 }
 
-function Task(newTask) {
-  this.newTask = newTask;
+function Task(description) {
+  this.description = description;
 }
 
 // toDoList.prototype.deleteTasks = function(id) {
@@ -41,16 +41,22 @@ $(document).ready(function() {
 
   $("form#list").submit(function(e) {
     e.preventDefault();
+    $("#tasks").empty();
     var newTask = $("input#work").val();
     var newListItem = new Task(newTask);
     newList.addTask(newListItem);
-console.log(newList);
-    $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
+    console.log(newList);
+    newList.tasks.forEach(function(item) {
+      $("#tasks").append("<li>" + item.description + "</li>");
+    })
   })
+  // $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
+  // Old method not good for working on arrays.
 
-  $(".objectives").click(function() {
-    if (confirm("Remove this Task?")) {
-      $("#tasks")
-    }
-  })
+  // $(".objectives").click(function() {
+  //   if (confirm("Remove this Task?")) {
+  //     newList.deleteTasks(newListItem);
+  //     // $("#tasks").remove()
+  //   }
+  // })
 })
