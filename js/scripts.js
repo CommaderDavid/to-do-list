@@ -16,6 +16,7 @@ toDoList.prototype.assignId = function() {
 
 function Task(description) {
   this.description = description;
+  this.complete = false;
 }
 
 // toDoList.prototype.deleteTasks = function(id) {
@@ -41,22 +42,25 @@ $(document).ready(function() {
 
   $("form#list").submit(function(e) {
     e.preventDefault();
+
     $("#tasks").empty();
+
     var newTask = $("input#work").val();
     var newListItem = new Task(newTask);
+
     newList.addTask(newListItem);
-    console.log(newList);
+
     newList.tasks.forEach(function(item) {
-      $("#tasks").append("<li>" + item.description + "</li>");
+      $("#tasks").append("<li value="+ item.id +">" + item.description + "<span class='complete'> Complete</span><span class='delete'> Delete</span>" + "</li>");
+      // this takes an element from the array and displays it with a complete and delete span.
+    })
+    $(".complete").click(function() {
+      console.log($(this).parent().val(), "complete");
+    })
+    $(".delete").click(function() {
+
     })
   })
   // $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
   // Old method not good for working on arrays.
-
-  // $(".objectives").click(function() {
-  //   if (confirm("Remove this Task?")) {
-  //     newList.deleteTasks(newListItem);
-  //     // $("#tasks").remove()
-  //   }
-  // })
 })
