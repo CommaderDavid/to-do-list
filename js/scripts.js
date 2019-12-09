@@ -14,22 +14,22 @@ toDoList.prototype.assignId = function() {
   return this.currentId;
 }
 
+toDoList.prototype.deleteTasks = function(id) {
+  for (var i = 0; i < this.tasks.length; i++) {
+    if (this.tasks[i]) {
+      if (this.tasks[i].id == id) {
+        delete this.tasks[i];
+        return true;
+      }
+    }
+  };
+  return false;
+}
+
 function Task(description) {
   this.description = description;
   this.complete = false;
 }
-
-// toDoList.prototype.deleteTasks = function(id) {
-//   for (var i = 0; i < this.tasks.length; i++) {
-//     if (this.tasks[i]) {
-//       if (this.tasks[i].id == id) {
-//         delete this.tasks[i];
-//         return true;
-//       }
-//     }
-//   };
-//   return false;
-// }
 // Front end
 $(document).ready(function() {
   var user = prompt("Please enter your name", "Name Here");
@@ -58,7 +58,7 @@ $(document).ready(function() {
       console.log($(this).parent().val(), "complete");
     })
     $(".delete").click(function() {
-
+      console.log($(this).parent().val(), "delete");
     })
   })
   // $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
