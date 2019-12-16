@@ -84,7 +84,12 @@ $(document).ready(function() {
       // Updates the complete state of the object.
     })
     $(".delete").click(function() {
-      console.log($(this).parent().val(), "delete");
+      var currId = $(this).parent().val();
+      // Finds the id value from the clicked list item.
+      newList.deleteTask(currId);
+      // Runs the deleteTask prototype on the object matching the currId.
+      $(this).parent().remove();
+      // Removes the parent from the html file.
     })
     $("#description").val('');
   })
