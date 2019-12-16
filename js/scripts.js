@@ -41,6 +41,8 @@ function Task(description) {
   this.description = description;
   this.complete = false;
 }
+
+
 // Front end
 $(document).ready(function() {
   var user = prompt("Please enter your name", "Name Here");
