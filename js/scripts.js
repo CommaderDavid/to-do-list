@@ -1,7 +1,7 @@
 // Back end
 function toDoList() {
   this.tasks = [];
-  this.currentId = 0;
+  this.id = 0;
 }
 
 toDoList.prototype.addTask = function(newTask) {
@@ -53,13 +53,13 @@ $(document).ready(function() {
 
   $("form#list").submit(function(e) {
     e.preventDefault();
-
     $("#tasks").empty();
 
-    var newTask = $("input#work").val();
-    var newListItem = new Task(newTask);
+    var listItem = $("input#work").val();
+    var newListItem = new Task(listItem);
 
     newList.addTask(newListItem);
+    console.log(newListItem);
 
     newList.tasks.forEach(function(item) {
       $("#tasks").append("<li value="+ item.id +">" + item.description + "<span class='complete'> Complete</span><span class='delete'> Delete</span>" + "</li>");
