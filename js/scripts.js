@@ -4,17 +4,28 @@ function toDoList() {
   this.currentId = 0;
 }
 
-toDoList.prototype.addTask = function(task) {
-  task.id = this.assignId();
-  this.tasks.push(task);
+toDoList.prototype.addTask = function(newTask) {
+  newTask.id = this.assignId();
+  this.tasks.push(newTask);
 }
 
 toDoList.prototype.assignId = function() {
-  this.currentId += 1;
-  return this.currentId;
+  this.id += 1;
+  return this.id;
 }
 
-toDoList.prototype.deleteTasks = function(id) {
+toDoList.prototype.findTask = function(id) {
+  for (var i = 0; i < this.tasks.length; i++) {
+    if (this.tasks[i]) {
+      if (this.tasks[i].id == id) {
+        return this.tasks[i];
+      }
+    }
+  };
+  return false;
+}
+
+toDoList.prototype.deleteTask = function(id) {
   for (var i = 0; i < this.tasks.length; i++) {
     if (this.tasks[i]) {
       if (this.tasks[i].id == id) {
