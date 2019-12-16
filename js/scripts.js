@@ -39,14 +39,14 @@ toDoList.prototype.deleteTask = function(id) {
 
 function Task(description) {
   this.description = description;
-  this.complete = false;
+  this.completed = "| Not Finished";
 }
 
 Task.prototype.Complete = function() {
-  if (this.completed == "Not Finished") {
-    this.completed = "Task Complete"
+  if (this.completed == "| Not Finished") {
+    this.completed = "| Task Complete"
   } else {
-    this.completed = "Not Finished"
+    this.completed = "| Not Finished"
   }
 }
 // Front end
@@ -70,15 +70,23 @@ $(document).ready(function() {
     console.log(newListItem);
 
     newList.tasks.forEach(function(item) {
-      $("#tasks").append("<li value="+ item.id +">" + item.description + "<span class='complete'> Complete</span><span class='delete'> Delete</span>" + "</li>");
+      $("#tasks").append("<li value="+ item.id +">" + item.description + "<span class='complete'> "+ item.completed +"</span><span class='delete'> | Delete</span>" + "</li>");
       // this takes an element from the array and displays it with a complete and delete span.
     })
     $(".complete").click(function() {
-      console.log($(this).parent().val(), "complete");
+      var currId = $(this).parent().val();
+      // Finds the id value from the clicked list item.
+      var currTask = newList.findTask(currId);
+      // Finds the object to the matching value in the array.
+      currTask.Complete();
+      // Adds the prototype of Complete to the object.
+      $(this).text(" "+ currTask.completed)
+      // Updates the complete state of the object.
     })
     $(".delete").click(function() {
       console.log($(this).parent().val(), "delete");
     })
+    $("#description").val('');
   })
   // $("ol#tasks").append("<li>" + newListItem.newTask + "</li>");
   // Old method not good for working on arrays.
