@@ -42,7 +42,13 @@ function Task(description) {
   this.complete = false;
 }
 
-
+Task.prototype.Complete = function() {
+  if (this.completed == "Not Finished") {
+    this.completed = "Task Complete"
+  } else {
+    this.completed = "Not Finished"
+  }
+}
 // Front end
 $(document).ready(function() {
   var user = prompt("Please enter your name", "Name Here");
