@@ -26,13 +26,13 @@
 
 #### Please list the names of the lessons you completed today:
 
-*
+* To-Do list
 
 
 #### Please list the names of the projects you worked on today:
 
-*
+* To-Do list
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/to-do-list
